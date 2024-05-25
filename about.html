@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>About Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: rgba(92, 160, 244, 0.653);
+            --primary-text: black;
+            --background: rgba(84, 84, 235, 0.6);
+            --dark-background: #121212;
+            --dark-text: white;
+            --dark-primary: #1c1c1c;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--primary-text);
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 100vw;
+            height: 60px;
+            padding: 0 20px;
+            align-items: center;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-text);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #2d2ab6c7;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px #999;
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            background-color: #24213b61;
+            transform: translateY(-3px);
+            color: black;
+            box-shadow: 0 10px black;
+        }
+
+        .button:active {
+            background-color: #1760af;
+            box-shadow: 0 5px #1a07a8;
+            transform: translateY(4px);
+        }
+
+        .name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+
+        .name a {
+            text-decoration: none;
+            color: var(--primary-text);
+            transition: color 0.3s;
+        }
+
+        .name a:hover {
+            color: #1760af;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-content ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 30px;
+            font-size: 1.2em;
+        }
+
+        .nav-content ul li a {
+            text-decoration: none;
+            color: var(--primary-text);
+            transition: color 0.3s;
+        }
+
+        .nav-content ul li a:hover {
+            color: #1760af;
+        }
+
+        .nav-content.mobile-menu {
+            display: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(to top left, rgba(84, 84, 235, 0.6), rgba(92, 160, 244, 0.653));
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .about-section {
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 2s;
+        }
+
+        .about-section h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .about-section p {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .skills,
+        .experience,
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .skills ul,
+        .experience ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skills ul li,
+        .experience ul li {
+            background-color: #eecbcb;
+            color: var(--primary-text);
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .skills ul li:hover,
+        .experience ul li:hover {
+            background-color: blue;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+
+
+        @media (max-width: 768px) {
+            .nav-content {
+                display: none;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-content.mobile-menu {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                width: 70%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1;
+            }
+
+            .nav-content.mobile-menu ul {
+                flex-direction: column;
+                gap: 20px;
+                font-size: 1.2em;
+                padding: 20px 0;
+            }
+
+            .nav-content.mobile-menu.show {
+                transform: translateX(0);
+            }
+
+            .black-blur {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                backdrop-filter: blur(5px);
+                z-index: 0;
+                display: none;
+            }
+
+            .black-blur.show {
+                display: block;
+            }
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            height: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="black-blur" id="blackBlur"></div>
+    <nav>
+        <div class="name">
+            <p><a href="index.html">KISLAY</a></p>
+        </div>
+        <div class="menu-icon" id="menuIcon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-content" id="navContent">
+            <ul>
+                <li><a href="index.html"><button class="button">Home</button></a></li>
+                <li><a href="about.html"><button class="button">About</button></a></li>
+                <li><a href="resume.html"><button class="button">Resume</button></a></li>
+                <li><a href="project.html"><button class="button">Project</button></a></li>
+                <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
+                <li><a href="contact.html"><button class="button">Contact</button></a></li>
+            </ul>
+        </div>
+        <div class="nav-content mobile-menu" id="mobileNavContent">
+            <ul>
+                <li><a href="index.html"><button class="button">Home</button></a></li>
+                <li><a href="about.html"><button class="button">About</button></a></li>
+                <li><a href="resume.html"><button class="button">Resume</button></a></li>
+                <li><a href="project.html"><button class="button">Project</button></a></li>
+                <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
+                <li><a href="contact.html"><button class="button">Contact</button></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="about-section">
+            <h1>About Me</h1>
+            <p>Hi, I'm Kislay Kumar, a passionate software developer with a knack for creating dynamic and responsive
+                web applications. I love solving problems and continuously learning new technologies to enhance my
+                skills. With a strong foundation in various programming languages and frameworks, I aim to deliver
+                efficient and scalable solutions.</p>
+        </div>
+
+        <div class="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>C++</li>
+                <li>Java</li>
+                <li>Python</li>
+                <li>Data Structures and Algorithms</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>SQL</li>
+            </ul>
+        </div>
+
+        <div class="experience">
+            <h2>Work Experience</h2>
+            <ul>
+                <li>Technical Content Writer Intern at GeeksForGeeks (March 2024 - Present)</li>
+                <li>Web Developer Intern at Bharat Intern (February 2024 - March 2024)</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>&copy; 2024 Kislay Kumar</footer>
+
+    <script>
+        document.getElementById("menuIcon").addEventListener("click", function () {
+            var mobileNavContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            mobileNavContent.classList.toggle("show");
+            blackBlur.classList.toggle("show");
+        });
+
+        window.addEventListener("resize", function () {
+            var mobileNavContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            if (window.innerWidth > 768) {
+                mobileNavContent.classList.remove("show");
+                blackBlur.classList.remove("show");
+            }
+        });
+
+        document.getElementById("blackBlur").addEventListener("click", function () {
+            var mobileNavContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            mobileNavContent.classList.remove("show");
+            blackBlur.classList.remove("show");
+        });
+    </script>
+</body>
+
+</html>

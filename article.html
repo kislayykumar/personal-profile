@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary-color: rgba(92, 160, 244, 0.653);
+            --secondary-color: rgb(38, 38, 192);
+            --primary-text: black;
+            --background: rgba(84, 84, 235, 0.6);
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--primary-text);
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 100vw;
+            height: 60px;
+            padding: 0 20px;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 39px;
+            height: 41px;
+            margin: 5px 2px;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-text);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #2d2ab6c7;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px #999;
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            background-color: #24213b61;
+            transform: translateY(-3px);
+            color: black;
+            box-shadow: 0 10px black;
+        }
+
+        .button:active {
+            background-color: #1760af;
+            box-shadow: 0 5px #1a07a8;
+            transform: translateY(4px);
+        }
+
+
+        .name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+
+        .name a {
+            text-decoration: none;
+            color: var(--primary-text);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-content ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 30px;
+            font-size: 1.2em;
+        }
+
+        .nav-content ul li a {
+            text-decoration: none;
+            color: var(--primary-text);
+        }
+
+        .heading-main {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .conatiner-main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px;
+            justify-content: space-between;
+        }
+
+        .conatiner-main a {
+            text-decoration: none;
+            color: #999;
+        }
+
+        .box {
+            width: 300px;
+            height: 350px;
+            background: linear-gradient(to top left, rgba(84, 84, 235, 0.6), rgba(92, 160, 244, 0.653));
+            border: 2px solid black;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .box h2 {
+            text-align: center;
+            margin: 10px;
+            color: #000000;
+        }
+
+        .box8 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .article-img img {
+            width: 280px;
+            margin: 10px;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .article-img6 img,
+        .article-img7 img {
+            width: 280px;
+            margin: 10px;
+            height: 220px;
+        }
+
+        .nav-content.mobile-menu {
+            display: none;
+        }
+
+        .black-blur {
+            display: none;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            height: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: var(--primary-text);
+            font-size: 50px;
+        }
+
+        .social-icons a:hover {
+            color: red;
+        }
+
+        .social-icons a img:hover {
+            background: red;
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                display: none;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-content.mobile-menu {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                width: 70%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1;
+            }
+
+            .nav-content.mobile-menu ul {
+                flex-direction: column;
+                gap: 20px;
+                font-size: 1.2em;
+                padding: 20px 0;
+            }
+
+            .nav-content.mobile-menu.show {
+                transform: translateX(0);
+            }
+
+            .black-blur {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                backdrop-filter: blur(5px);
+                z-index: 0;
+                display: none;
+            }
+
+            .black-blur.show {
+                display: block;
+            }
+        }
+    </style>
+    <title>Articles || Kislay Kumar</title>
+</head>
+
+<body>
+    <div class="black-blur" id="blackBlur"></div>
+    <nav>
+        <div class="name">
+            <p><a href="">KISLAY</a></p>
+        </div>
+        <div class="menu-icon" id="menuIcon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-content" id="navContent">
+            <ul>
+                <li><a href="index.html"><button class="button">Home</button></a></li>
+                <li><a href="about.html"><button class="button">About</button></a></li>
+                <li><a href="resume.html"><button class="button">Resume</button></a></li>
+                <li><a href="project.html"><button class="button">Project</button></a></li>
+                <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
+                <li><a href="contact.html"><button class="button">Contact</button></a></li>
+            </ul>
+        </div>
+        <div class="nav-content mobile-menu" id="mobileNavContent">
+            <ul>
+                <li><a href="index.html"><button class="button">Home</button></a></li>
+                <li><a href="about.html"><button class="button">About</button></a></li>
+                <li><a href="resume.html"><button class="button">Resume</button></a></li>
+                <li><a href="project.html"><button class="button">Project</button></a></li>
+                <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
+                <li><a href="contact.html"><button class="button">Contact</button></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="heading-main">
+        <h1>Technical Articles</h1>
+    </div>
+
+    <div class="conatiner-main">
+        <a href="https://www.geeksforgeeks.org/preorder-vs-inorder-vs-postorder/">
+            <div class="box box1">
+                <h2>Preorder vs Inorder vs Postorder</h2>
+                <div class="article-img">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230203074235/new-binary-tree.png"
+                        alt="">
+                </div>
+
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/arima-vs-sarima-model/">
+            <div class="box box2">
+                <h2>Arima vs Sarima Machine Learning Model</h2>
+                <div class="article-img">
+                    <img src="arimasarima.jpg" alt="">
+                </div>
+
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/loopholes-with-blockchain-technology/">
+            <div class="box box3">
+                <h2>Loopholes with Blockchain Technology</h2>
+                <div class="article-img">
+                    <img src="https://images.shiksha.com/mediadata/images/articles/1574684864phpP5llwM.jpeg" alt="">
+                </div>
+
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/what-is-ubuntu/">
+            <div class="box box4">
+                <h2>What is Ubuntu operating system?</h2>
+                <div class="article-img">
+                    <img src="https://imageio.forbes.com/blogs-images/jasonevangelho/files/2018/07/ubuntu-logo.jpg?height=502&width=711&fit=bounds"
+                        alt="">
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/why-is-unit-testing-harder-in-oop/">
+            <div class="box box5">
+                <h2>Why is Unit Testing Harder in OOP?</h2>
+                <div class="article-img">
+                    <img src="https://assets-global.website-files.com/5eb9845c0972c01cdaec8415/61b833d53613d17360092a7e_unit-testing.png"
+                        alt="">
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/how-to-change-the-owner-of-a-directory-using-python/">
+            <div class="box box6">
+                <h2>How to Change the Owner of a Directory Using Python</h2>
+                <div class="article-img article-img6">
+                    <img src="https://i0.wp.com/junilearning.com/wp-content/uploads/2020/06/python-programming-language.webp?fit=1920%2C1920&ssl=1"
+                        alt="">
+                </div>
+            </div>
+        </a>
+
+        <a
+            href="https://www.geeksforgeeks.org/why-are-system-testing-costs-particularly-high-for-generic-software-products/">
+            <div class="box box7">
+                <h2>Why are system testing costs particularly high for generic software products?</h2>
+                <div class="article-img article-img7">
+                    <img src="https://cdn.educba.com/academy/wp-content/uploads/2019/04/System-Testing.jpg" alt="">
+                </div>
+            </div>
+        </a>
+
+        <a href="https://auth.geeksforgeeks.org/user/kislay_kumar/articles">
+            <div class="box box8">
+                <h2>click here for more articles...</h2>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.linkedin.com/in/kislay-kumar-a49a1316b/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/kislayykumar"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/kislayy.kumar/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/kislayy.kumar/"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/kislayy_kumar"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.quora.com/profile/Kislay-Kumar-182"><i class="fab fa-quora"></i></a>
+        <a href="https://www.geeksforgeeks.org/user/kislay_kumar/"><img src="geeksforgeeks.png" width="45px" height="40px" alt=""></i></a>
+        <a href="https://leetcode.com/u/kislay__kumar/"><img src="leetcode.png" width="45px" height="40px" alt=""></i></a>
+      </div>
+
+    <footer>&copy; Copyright 2024 KISLAY KUMAR</footer>
+
+    <script>
+
+        document.getElementById("menuIcon").addEventListener("click", function () {
+            var mobileNavContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            mobileNavContent.classList.toggle("show");
+            blackBlur.classList.toggle("show");
+        });
+
+        window.addEventListener("resize", function () {
+            var mobileNavContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            if (window.innerWidth > 768) {
+                mobileNavContent.classList.remove("show");
+                blackBlur.classList.remove("show");
+            }
+        });
+
+
+        document.getElementById("blackBlur").addEventListener("click", function () {
+            var navContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            mobileNavContent.classList.remove("show");
+            blackBlur.classList.remove("show");
+        });
+    </script>
+</body>
+
+</html>
