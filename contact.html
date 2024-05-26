@@ -18,9 +18,10 @@
         }
 
         :root {
-            --primary-color: rgba(92, 160, 244, 0.653);
+            --primary-color: #feb300;
             --primary-text: black;
-            --background: rgba(84, 84, 235, 0.6);
+            --background: #fff5d7;
+            --boxcolor: #fbf579;
         }
 
         body {
@@ -63,24 +64,24 @@
             text-align: center;
             text-decoration: none;
             outline: none;
-            color: #fff;
-            background-color: #2d2ab6c7;
+            color: black;
+            background-color: #f3e084;
             border: none;
             border-radius: 15px;
-            box-shadow: 0 5px #999;
+            box-shadow: 0 5px #ff5e6c;
             transition: all 0.3s;
         }
 
         .button:hover {
-            background-color: #24213b61;
+            background-color: #ff5e6c;
             transform: translateY(-3px);
-            color: black;
-            box-shadow: 0 10px black;
+            color: white;
+            box-shadow: 0 10px #f3e084;
         }
 
         .button:active {
-            background-color: #1760af;
-            box-shadow: 0 5px #1a07a8;
+            background-color: #fe3d4d;
+            box-shadow: 0 5px #fbde4f;
             transform: translateY(4px);
         }
 
@@ -127,7 +128,7 @@
         }
 
         form {
-            background-color: var(--primary-color);
+            background-color: var(--boxcolor);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -202,11 +203,11 @@
         }
 
         .social-icons a:hover {
-            color: red;
+            color: blue;
         }
 
         .social-icons a img:hover {
-            background: red;
+            background: blue;
         }
 
         @media (max-width: 768px) {
@@ -229,7 +230,8 @@
                 right: 0;
                 width: 70%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);;
+                background-color: rgba(0, 0, 0, 0.7);
+                ;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -273,7 +275,7 @@
     <div class="black-blur" id="blackBlur"></div>
     <nav>
         <div class="name">
-            <p><a href="">KISLAY</a></p>
+            <p><a href="index.html">KISLAY</a></p>
         </div>
         <div class="menu-icon" id="menuIcon">
             <div></div>
@@ -288,7 +290,7 @@
                 <li><a href="project.html"><button class="button">Project</button></a></li>
                 <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
                 <li><a href="contact.html"><button class="button">Contact</button></a></li>
-              </ul>
+            </ul>
         </div>
         <div class="nav-content mobile-menu" id="mobileNavContent">
             <ul>
@@ -298,13 +300,15 @@
                 <li><a href="project.html"><button class="button">Project</button></a></li>
                 <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
                 <li><a href="contact.html"><button class="button">Contact</button></a></li>
-              </ul>
+            </ul>
         </div>
     </nav>
     <div class="container">
         <h1>Contact Me</h1>
-        <form action="https://api.web3forms.com/submit" method="POST">
+        <form action="https://api.web3forms.com/submit" method="POST" id="form">
             <input type="hidden" name="access_key" value="63305b49-8162-4cb0-9d62-f2c9ccd172d8">
+            <input type="hidden" name="from_name" value="ContactMeForm">
+            <input type="hidden" name="redirect" value="https://kislayy.vercel.app/thankyou.html">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required>
             <label for="email">Your Email:</label>
@@ -312,9 +316,12 @@
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Please enter a 10-digit phone number"
                 required>
+            <label for="phone">Subject:</label>
+            <input type="text" name="subject" required>
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
             <button type="submit">Send</button>
+            <button type="reset">Reset</button>
         </form>
 
     </div>
@@ -326,9 +333,11 @@
         <a href="https://www.facebook.com/kislayy.kumar/"><i class="fab fa-facebook"></i></a>
         <a href="https://x.com/kislayy_kumar"><i class="fab fa-twitter"></i></a>
         <a href="https://www.quora.com/profile/Kislay-Kumar-182"><i class="fab fa-quora"></i></a>
-        <a href="https://www.geeksforgeeks.org/user/kislay_kumar/"><img src="geeksforgeeks.png" width="45px" height="40px" alt=""></i></a>
-        <a href="https://leetcode.com/u/kislay__kumar/"><img src="leetcode.png" width="45px" height="40px" alt=""></i></a>
-      </div>
+        <a href="https://www.geeksforgeeks.org/user/kislay_kumar/"><img src="geeksforgeeks.png" width="45px"
+                height="40px" alt=""></i></a>
+        <a href="https://leetcode.com/u/kislay__kumar/"><img src="leetcode.png" width="45px" height="40px"
+                alt=""></i></a>
+    </div>
 
     <footer>&copy; Copyright 2024 KISLAY KUMAR</footer>
 
@@ -357,6 +366,12 @@
             mobileNavContent.classList.remove("show");
             blackBlur.classList.remove("show");
         });
+
+        window.onload = function () {
+            // Reset the form fields when the page loads
+            document.getElementById("form").reset();
+        };
+
     </script>
 </body>
 
