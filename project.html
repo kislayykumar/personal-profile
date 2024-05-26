@@ -18,9 +18,10 @@
         }
 
         :root {
-            --primary-color: rgba(92, 160, 244, 0.653);
+            --primary-color: #feb300;
             --primary-text: black;
-            --background: rgba(84, 84, 235, 0.6);
+            --background: #fff5d7;
+            --boxcolor: #fbf579;
         }
 
         body {
@@ -63,25 +64,24 @@
             text-align: center;
             text-decoration: none;
             outline: none;
-            color: #fff;
-            background-color: #2d2ab6c7;
-            ;
+            color: black;
+            background-color: #f3e084;
             border: none;
             border-radius: 15px;
-            box-shadow: 0 5px #999;
+            box-shadow: 0 5px #ff5e6c;
             transition: all 0.3s;
         }
 
         .button:hover {
-            background-color: #24213b61;
+            background-color: #ff5e6c;
             transform: translateY(-3px);
-            color: black;
-            box-shadow: 0 10px black;
+            color: white;
+            box-shadow: 0 10px #f3e084;
         }
 
         .button:active {
-            background-color: #1760af;
-            box-shadow: 0 5px #1a07a8;
+            background-color: #fe3d4d;
+            box-shadow: 0 5px #fbde4f;
             transform: translateY(4px);
         }
 
@@ -152,11 +152,11 @@
         }
 
         .social-icons a:hover {
-            color: red;
+            color: blue;
         }
 
         .social-icons a img:hover {
-            background: red;
+            background: blue;
         }
 
         .project-seq {
@@ -200,7 +200,7 @@
             width: 80%;
             margin: 3% 9%;
             height: 400px;
-            background: linear-gradient(to top left, rgba(84, 84, 235, 0.6), rgba(92, 160, 244, 0.653));
+            background-color: var(--boxcolor);
             border-radius: 20px;
             border: 4px solid rgb(0, 0, 0);
         }
@@ -247,9 +247,6 @@
             text-align: justify;
         }
 
-        .right:hover {
-            color: #fff;
-        }
 
         @media (max-width: 768px) {
             .nav-content {
@@ -315,7 +312,7 @@
                 width: 97%;
                 margin: 3% 3%;
                 height: 500px;
-                background: linear-gradient(to top left, rgba(84, 84, 235, 0.6), rgba(92, 160, 244, 0.653));
+                background-color: var(--boxcolor);
                 border-radius: 20px;
                 border: 4px solid rgb(0, 0, 0);
             }
@@ -354,7 +351,7 @@
     <div class="black-blur" id="blackBlur"></div>
     <nav>
         <div class="name">
-            <p><a href="">KISLAY</a></p>
+            <p><a href="index.html">KISLAY</a></p>
         </div>
         <div class="menu-icon" id="menuIcon">
             <div></div>
@@ -410,8 +407,7 @@
                         <a href="https://github.com/kislayykumar/Ecommerce-Security-portal.git"><i
                                 class="fab fa-github"></i></a>
                         <a href="https://youtu.be/Si4HpHb_xxs?si=FZoyCMdwf6z80hdd"><i class="fab fa-youtube"></i></a>
-                        <a href="https://securityportal.vercel.app/"><i
-                                class="fas fa-globe"></i></a>
+                        <a href="https://kislayykumar.github.io/Ecommerce-Security-portal/"><i class="fas fa-globe"></i></a>
                     </div>
 
                 </div>
@@ -453,9 +449,7 @@
                         one for predicting the likelihood of contracting the infection and the other for forecasting the
                         number of
                         positive cases, are described using machine learning techniques. 
-                        It is discussed how to forecast confirmed cases for different Indian states using autoregressive
-                        integrated
-                        moving average time series(ARIMA).
+                        It is discussed how to forecast confirmed cases for different Indian states using ARIMA Model.
                     </p>
                     <br>
                     <p class="p2">
@@ -467,7 +461,13 @@
                         well-being
                         and morals of the severely affected countries are also at risk. Understanding the covid-19
                         virus's natural
-                        progression is crucial for making precise and effective forecasts. 
+                        progression is crucial for making precise and effective forecasts. New understandings regarding
+                        the
+                        validity of the designed and validated prediction models are revealed as the COVID-19 pandemic
+                        develops
+                        and more data is gathered; nonetheless, projecting the pandemic's future requires open reporting
+                        and
+                        multiple model evaluations.
                     </p>
 
                 </div>
@@ -481,21 +481,26 @@
             <div class="inside">
                 <div class="left">
                     <img src="https://thenfapost.com/wp-content/uploads/2021/01/netflix.jpg" alt="">
-
                     <div class="icon-box">
-                    <a href="https://github.com/kislayykumar/Netflix-clone.git"><i class="fab fa-github"></i></a>
-                    <a href="https://netflixclonebykislayy.vercel.app/"><i
-                                class="fas fa-globe"></i></a>
-                </div>
+                        <a href="https://github.com/kislayykumar/Netflix-clone.git"><i class="fab fa-github"></i></a>
+                        <a href="https://netflixclonebykislayy.vercel.app/"><i class="fas fa-globe"></i></a>
                     </div>
+                </div>
                 <div class="right">
-                    <p class="p1">
-                        Netflix is a subscription-based streaming service that offers TV shows, movies, documentaries, and games. It's available in over 190                                 countries and 30 languages, and members can watch content on many devices, including smart TVs, game consoles, streaming media players,                             set-top boxes, smartphones, tablets, and computers.
+                    <p class="p1">The comprehensive fraud detection system incorporates a blend of machine learning,
+                        deep learning,
+                        and genetic algorithms to effectively identify and classify fraudulent activities in both online
+                        transactions and website authenticity. By analyzing various features such as URL age, presence
+                        of anchor tags, and transaction patterns, this advanced system aids users in determining the
+                        legitimacy of websites and prevents payment fraud in credit card transactions.
                     </p>
                     <br>
                     <p class="p2">
-                        This project aims to clone the Netflix website completely and responsive to mobile and tablet also. The all functionality has been perfectly cloned and appers to be real website.
-                        
+                        Utilizing a diverse range of algorithms including Decision Trees, Random Forest, Deep Neural
+                        Networks (DNN), Multilayer Perceptron (MLP), and genetic algorithms, the system ensures robust
+                        detection and classification capabilities. This adaptable solution can be seamlessly integrated
+                        into web applications, offering broad utility for users seeking enhanced security against both
+                        phishing attempts and fraudulent transactions.
                     </p>
 
                 </div>
