@@ -37,6 +37,11 @@
       height: 60px;
     }
 
+    #kislay-img {
+      border: 7px solid red;
+      border-radius: 50%;
+    }
+
     .menu-icon {
       display: none;
       flex-direction: column;
@@ -298,7 +303,7 @@
   </nav>
   <div class="main-container">
     <div class="photo">
-      <img src="profile-pic.png" alt="KISLAYKUMAR" />
+      <img src="profile-pic.png" alt="KISLAYKUMAR" id="kislay-img"/>
     </div>
     <div class="intro">
       <p>Hello,</p>
@@ -324,6 +329,19 @@
   <footer>&copy; Copyright 2024 KISLAY KUMAR</footer>
 
   <script>
+
+    function randomcolor() {
+      let val1 = Math.ceil(0 + Math.random() * 255);
+      let val2 = Math.ceil(0 + Math.random() * 255);
+      let val3 = Math.ceil(0 + Math.random() * 255);
+
+      return `rgb(${val1}, ${val2}, ${val3})`;
+    }
+    setInterval(() => {
+      document.getElementById("kislay-img").style.borderColor = randomcolor();
+    }, 500);
+
+    document.getElementById("kislay-img").style.borderColor = randomcolor();
 
     document.getElementById("menuIcon").addEventListener("click", function () {
       var mobileNavContent = document.getElementById("mobileNavContent");
