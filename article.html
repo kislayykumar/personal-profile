@@ -2,87 +2,102 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <title>Technical Articles || Kislay Kumar</title>
     <style>
+        :root {
+            --primary-color: #1a2238; /* Navy */
+            --primary-text: #23272f;
+            --background: #f7f7fa;
+            --boxcolor: #fff;
+            --accent: #eaeaea;
+            --button-bg: #1a2238;
+            --button-hover: #ffd700; /* Gold */
+            --button-text: #fff;
+            --shadow: 0 4px 24px rgba(26, 34, 56, 0.08);
+            --highlight: #ffd700; /* Gold */
+        }
+
         * {
             margin: 0;
             padding: 0;
-        }
-
-        :root {
-            --primary-color: #feb300;
-            --primary-text: black;
-            --background: #fff5d7;
-            --boxcolor: #fbf579;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--background);
+            background: linear-gradient(120deg, #f7f7fa 0%, #eaeaea 100%);
             color: var(--primary-text);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s, color 0.3s;
         }
 
         nav {
-            background-color: var(--primary-color);
+            background: var(--primary-color);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             max-width: 100vw;
             height: 60px;
-            padding: 0 20px;
+            padding: 0 32px;
+            align-items: center;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 18px 18px;
+            color: #fff;
         }
 
         .menu-icon {
             display: none;
             flex-direction: column;
             justify-content: space-around;
-            width: 39px;
-            height: 41px;
-            margin: 5px 2px;
+            width: 30px;
+            height: 30px;
             cursor: pointer;
         }
 
         .menu-icon div {
             width: 100%;
             height: 4px;
-            background-color: var(--primary-text);
+            background-color: var(--highlight);
+            border-radius: 2px;
+            box-shadow: 0 1px 2px rgba(26,34,56,0.10);
         }
 
         .button {
             display: inline-block;
-            padding: 10px 15px;
-            font-size: 14px;
+            padding: 10px 22px;
+            font-size: 15px;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
             outline: none;
-            color: black;
-            background-color: #f3e084;
+            color: var(--button-text);
+            background: var(--button-bg);
             border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px #ff5e6c;
-            transition: all 0.3s;
+            border-radius: 22px;
+            box-shadow: 0 2px 8px rgba(26, 34, 56, 0.10);
+            transition: background 0.3s, color 0.3s, transform 0.2s;
         }
 
         .button:hover {
-            background-color: #ff5e6c;
-            transform: translateY(-3px);
-            color: white;
-            box-shadow: 0 10px #f3e084;
+            background: var(--button-hover);
+            color: var(--primary-color);
+            transform: translateY(-2px) scale(1.04);
         }
 
         .button:active {
-            background-color: #fe3d4d;
-            box-shadow: 0 5px #fbde4f;
-            transform: translateY(4px);
+            background: #1d4ed8;
+            box-shadow: 0 1px 2px rgba(26, 34, 56, 0.10);
+            transform: translateY(1px);
         }
-
 
         .name {
             display: flex;
@@ -93,7 +108,14 @@
 
         .name a {
             text-decoration: none;
-            color: var(--primary-text);
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .name a:hover {
+            color: #ffd700;
         }
 
         .nav-content {
@@ -112,97 +134,293 @@
 
         .nav-content ul li a {
             text-decoration: none;
-            color: var(--primary-text);
+            color: #fff;
+            transition: color 0.3s;
         }
 
-        .heading-main {
-            text-align: center;
-            font-size: 2em;
-        }
-
-        .conatiner-main {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px;
-            justify-content: space-between;
-        }
-
-        .conatiner-main a {
-            text-decoration: none;
-            color: #999;
-        }
-
-        .box {
-            width: 300px;
-            height: 350px;
-            background-color: var(--boxcolor);
-            border: 2px solid black;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .box h2 {
-            text-align: center;
-            margin: 10px;
-            color: #000000;
-        }
-
-        .box8 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .article-img img {
-            width: 280px;
-            margin: 10px;
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .article-img6 img,
-        .article-img7 img {
-            width: 280px;
-            margin: 10px;
-            height: 220px;
+        .nav-content ul li a:hover {
+            color: #ffd700;
         }
 
         .nav-content.mobile-menu {
             display: none;
         }
 
-        .black-blur {
-            display: none;
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0 60px 0;
+            background: linear-gradient(135deg, #1a2238 0%, #2c3454 50%, #1a2238 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffd700" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffd700" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffd700" opacity="0.15"/><circle cx="10" cy="60" r="0.5" fill="%23ffd700" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8)); }
+        }
+
+        .hero p {
+            color: #e0e6ff;
+            font-size: 1.3em;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+        }
+
+        .container-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(20px, 3vw, 32px);
+            margin: clamp(32px, 6vw, 60px) auto;
+            padding: 0 clamp(16px, 4vw, 48px);
+            max-width: min(1200px, 92vw);
+            position: relative;
+        }
+
+        .container-main::before {
+            content: '';
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--highlight));
+            border-radius: 2px;
+        }
+
+        .article-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
+            border-radius: clamp(12px, 2.5vw, 20px);
+            box-shadow: 0 4px 16px rgba(26, 34, 56, 0.08), 
+                        0 2px 8px rgba(26, 34, 56, 0.04);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            min-height: clamp(160px, 20vw, 200px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(26, 34, 56, 0.08);
+            padding: clamp(20px, 4vw, 32px);
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--highlight));
+            border-radius: clamp(12px, 2.5vw, 20px) clamp(12px, 2.5vw, 20px) 0 0;
+        }
+
+        .article-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.01) 0%, rgba(26, 34, 56, 0.01) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: clamp(12px, 2.5vw, 20px);
+            pointer-events: none;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(26, 34, 56, 0.12), 
+                        0 4px 16px rgba(26, 34, 56, 0.08);
+            border-color: rgba(255, 215, 0, 0.2);
+        }
+
+        .article-card:hover::after {
+            opacity: 1;
+        }
+
+        .article-image {
+            height: clamp(140px, 18vw, 200px);
+            overflow: hidden;
+            position: relative;
+            border-radius: 0;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: brightness(0.96) contrast(1.04);
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.06);
+            filter: brightness(1) contrast(1.08);
+        }
+
+        .article-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: clamp(24px, 5vw, 48px);
+            background: linear-gradient(transparent, rgba(26, 34, 56, 0.06));
+            transition: opacity 0.3s ease;
+        }
+
+        .article-content {
+            padding: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .article-card h2 {
+            color: var(--primary-color);
+            font-size: clamp(1.1em, 2.5vw, 1.4em);
+            font-weight: 700;
+            margin-bottom: clamp(12px, 2vw, 16px);
+            line-height: 1.4;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .article-card:hover h2 {
+            color: var(--highlight);
+        }
+
+        .article-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: clamp(-6px, -1.5vw, -8px);
+            left: 0;
+            width: clamp(30px, 8vw, 50px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--highlight), #ffed4e);
+            border-radius: 1px;
+            transition: width 0.3s ease;
+        }
+
+        .article-card:hover h2::after {
+            width: clamp(50px, 12vw, 80px);
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 16px;
+            color: #6a7187;
+            font-size: 0.9em;
+        }
+
+        .article-meta i {
+            color: var(--highlight);
+        }
+
+        .article-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .article-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .article-card:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .article-card:nth-child(3n) {
+            animation-delay: 0.4s;
         }
 
         footer {
-            background-color: var(--primary-color);
-            height: 40px;
+            background: var(--primary-color);
+            min-height: 48px;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            color: #fff;
+            font-size: 1.1em;
+            margin-top: auto;
+            box-shadow: 0 -2px 12px rgba(26, 34, 56, 0.08);
+            letter-spacing: 1px;
+            padding: 20px 0;
         }
 
-        .social-icons {
-            margin-top: 20px;
-            text-align: center;
+        @media (max-width: 1200px) {
+            .container-main {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: clamp(20px, 3vw, 40px);
+                padding: 0 clamp(12px, 3vw, 48px);
+            }
+            .hero h1 {
+                font-size: clamp(2.2em, 6vw, 3em);
+            }
         }
 
-        .social-icons a {
-            margin: 0 10px;
-            color: var(--primary-text);
-            font-size: 50px;
-        }
-
-        .social-icons a:hover {
-            color: blue;
-        }
-
-        .social-icons a img:hover {
-            background: blue;
+        @media (max-width: 900px) {
+            .container-main {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: clamp(16px, 4vw, 32px);
+            }
         }
 
         @media (max-width: 768px) {
@@ -214,31 +432,70 @@
                 display: flex;
             }
 
-            .main-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .nav-content.mobile-menu {
                 position: fixed;
                 top: 60px;
                 right: 0;
-                width: 70%;
+                width: 80vw;
+                max-width: 350px;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);;
+                background: #fff;
+                box-shadow: -2px 0 16px rgba(26, 34, 56, 0.10);
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 transform: translateX(100%);
                 transition: transform 0.3s ease-in-out;
-                z-index: 1;
+                z-index: 1001;
+                border-top-left-radius: 18px;
+                border-bottom-left-radius: 18px;
+                padding-top: 32px;
+                padding-bottom: 32px;
             }
 
             .nav-content.mobile-menu ul {
                 flex-direction: column;
                 gap: 20px;
-                font-size: 1.2em;
-                padding: 20px 0;
+                font-size: 1.1em;
+                padding: 32px 0;
+                width: 100%;
+                padding: 0 18px;
+            }
+
+            .nav-content.mobile-menu ul li {
+                width: 100%;
+                margin-bottom: 18px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-content.mobile-menu ul li:last-child {
+                margin-bottom: 0;
+            }
+
+            .nav-content.mobile-menu ul li a .button {
+                width: 100%;
+                max-width: 260px;
+                margin: 0 auto;
+                background: var(--button-bg);
+                color: var(--button-text) !important;
+                border: none;
+                border-radius: 22px;
+                padding: 12px 0;
+                font-size: 1.08em;
+                font-weight: 600;
+                text-align: center;
+                box-shadow: 0 2px 8px rgba(26, 34, 56, 0.10);
+                transition: background 0.3s, color 0.3s, transform 0.2s;
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+
+            .nav-content.mobile-menu ul li a .button:hover {
+                background: var(--button-hover);
+                color: var(--primary-color) !important;
+                transform: translateY(-2px) scale(1.04);
             }
 
             .nav-content.mobile-menu.show {
@@ -249,11 +506,11 @@
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.7);
-                backdrop-filter: blur(5px);
-                z-index: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.18);
+                backdrop-filter: blur(2px);
+                z-index: 1000;
                 display: none;
             }
 
@@ -261,12 +518,54 @@
                 display: block;
             }
 
-            .conatiner-main{
-                margin: 30px;
+            .hero {
+                padding: 60px 0 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+                padding: 0 20px;
+                text-align: center;
+            }
+
+            .container-main {
+                grid-template-columns: 1fr;
+                gap: clamp(12px, 3vw, 20px);
+                padding: 0 clamp(12px, 3vw, 16px);
+                margin: clamp(20px, 5vw, 32px) auto clamp(48px, 12vw, 80px) auto;
+            }
+
+            .article-card {
+                min-height: clamp(280px, 35vw, 320px);
+                border-radius: clamp(10px, 2.5vw, 16px);
+            }
+
+            .article-card::before {
+                border-radius: clamp(10px, 2.5vw, 16px) clamp(10px, 2.5vw, 16px) 0 0;
+            }
+
+            .article-card::after {
+                border-radius: clamp(10px, 2.5vw, 16px);
+            }
+
+            .article-image {
+                height: clamp(120px, 15vw, 160px);
+            }
+
+            .article-content {
+                padding: clamp(12px, 3vw, 18px);
+            }
+
+            .article-card h2 {
+                font-size: clamp(0.9em, 2.2vw, 1.1em);
+                margin-bottom: clamp(4px, 1.5vw, 8px);
             }
         }
     </style>
-    <title>Articles || Kislay Kumar</title>
 </head>
 
 <body>
@@ -284,7 +583,6 @@
             <ul>
                 <li><a href="index.html"><button class="button">Home</button></a></li>
                 <li><a href="about.html"><button class="button">About</button></a></li>
-                <li><a href="resume.html"><button class="button">Resume</button></a></li>
                 <li><a href="project.html"><button class="button">Project</button></a></li>
                 <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
                 <li><a href="contact.html"><button class="button">Contact</button></a></li>
@@ -294,112 +592,120 @@
             <ul>
                 <li><a href="index.html"><button class="button">Home</button></a></li>
                 <li><a href="about.html"><button class="button">About</button></a></li>
-                <li><a href="resume.html"><button class="button">Resume</button></a></li>
                 <li><a href="project.html"><button class="button">Project</button></a></li>
                 <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
                 <li><a href="contact.html"><button class="button">Contact</button></a></li>
             </ul>
         </div>
     </nav>
-    <div class="heading-main">
+
+    <section class="hero">
         <h1>Technical Articles</h1>
+        <p>Explore my insights and technical writings on development and technology.</p>
+    </section>
+
+    <div class="container-main">
+        <a href="https://www.geeksforgeeks.org/preorder-vs-inorder-vs-postorder/" class="article-link">
+            <div class="article-card">
+                <div class="article-content">
+                    <h2>Preorder vs Inorder vs Postorder</h2>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> GeeksForGeeks</span>
+                        <span><i class="fas fa-tree"></i> Data Structures</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/arima-vs-sarima-model/" class="article-link">
+            <div class="article-card">
+                <div class="article-content">
+                    <h2>ARIMA vs SARIMA Machine Learning Model</h2>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> GeeksForGeeks</span>
+                        <span><i class="fas fa-chart-line"></i> Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/loopholes-with-blockchain-technology/" class="article-link">
+            <div class="article-card">
+                <div class="article-content">
+                    <h2>Loopholes with Blockchain Technology</h2>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> GeeksForGeeks</span>
+                        <span><i class="fas fa-link"></i> Blockchain</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/what-is-ubuntu/" class="article-link">
+            <div class="article-card">
+                <div class="article-content">
+                    <h2>What is Ubuntu Operating System?</h2>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> GeeksForGeeks</span>
+                        <span><i class="fab fa-ubuntu"></i> Operating Systems</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/why-is-unit-testing-harder-in-oop/" class="article-link">
+            <div class="article-card">
+                <div class="article-content">
+                    <h2>Why is Unit Testing Harder in OOP?</h2>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> GeeksForGeeks</span>
+                        <span><i class="fas fa-vial"></i> Testing</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/how-to-change-the-owner-of-a-directory-using-python/" class="article-link">
+            <div class="article-card">
+                <div class="article-content">
+                    <h2>How to Change the Owner of a Directory Using Python</h2>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> GeeksForGeeks</span>
+                        <span><i class="fab fa-python"></i> Python</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.geeksforgeeks.org/why-are-system-testing-costs-particularly-high-for-generic-software-products/" class="article-link">
+            <div class="article-card">
+                <div class="article-content">
+                    <h2>Why are System Testing Costs Particularly High for Generic Software Products?</h2>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> GeeksForGeeks</span>
+                        <span><i class="fas fa-cogs"></i> Software Testing</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://auth.geeksforgeeks.org/user/kislay_kumar/articles" class="article-link">
+            <div class="article-card">
+                <div class="article-content">
+                    <h2>Click Here for More Articles...</h2>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> GeeksForGeeks</span>
+                        <span><i class="fas fa-plus"></i> More Content</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+
     </div>
 
-    <div class="conatiner-main">
-        <a href="https://www.geeksforgeeks.org/preorder-vs-inorder-vs-postorder/">
-            <div class="box box1">
-                <h2>Preorder vs Inorder vs Postorder</h2>
-                <div class="article-img">
-                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230203074235/new-binary-tree.png"
-                        alt="">
-                </div>
-
-            </div>
-        </a>
-
-        <a href="https://www.geeksforgeeks.org/arima-vs-sarima-model/">
-            <div class="box box2">
-                <h2>Arima vs Sarima Machine Learning Model</h2>
-                <div class="article-img">
-                    <img src="arimasarima.jpg" alt="">
-                </div>
-
-            </div>
-        </a>
-
-        <a href="https://www.geeksforgeeks.org/loopholes-with-blockchain-technology/">
-            <div class="box box3">
-                <h2>Loopholes with Blockchain Technology</h2>
-                <div class="article-img">
-                    <img src="https://images.shiksha.com/mediadata/images/articles/1574684864phpP5llwM.jpeg" alt="">
-                </div>
-
-            </div>
-        </a>
-
-        <a href="https://www.geeksforgeeks.org/what-is-ubuntu/">
-            <div class="box box4">
-                <h2>What is Ubuntu operating system?</h2>
-                <div class="article-img">
-                    <img src="https://imageio.forbes.com/blogs-images/jasonevangelho/files/2018/07/ubuntu-logo.jpg?height=502&width=711&fit=bounds"
-                        alt="">
-                </div>
-            </div>
-        </a>
-
-        <a href="https://www.geeksforgeeks.org/why-is-unit-testing-harder-in-oop/">
-            <div class="box box5">
-                <h2>Why is Unit Testing Harder in OOP?</h2>
-                <div class="article-img">
-                    <img src="https://assets-global.website-files.com/5eb9845c0972c01cdaec8415/61b833d53613d17360092a7e_unit-testing.png"
-                        alt="">
-                </div>
-            </div>
-        </a>
-
-        <a href="https://www.geeksforgeeks.org/how-to-change-the-owner-of-a-directory-using-python/">
-            <div class="box box6">
-                <h2>How to Change the Owner of a Directory Using Python</h2>
-                <div class="article-img article-img6">
-                    <img src="https://i0.wp.com/junilearning.com/wp-content/uploads/2020/06/python-programming-language.webp?fit=1920%2C1920&ssl=1"
-                        alt="">
-                </div>
-            </div>
-        </a>
-
-        <a
-            href="https://www.geeksforgeeks.org/why-are-system-testing-costs-particularly-high-for-generic-software-products/">
-            <div class="box box7">
-                <h2>Why are system testing costs particularly high for generic software products?</h2>
-                <div class="article-img article-img7">
-                    <img src="https://cdn.educba.com/academy/wp-content/uploads/2019/04/System-Testing.jpg" alt="">
-                </div>
-            </div>
-        </a>
-
-        <a href="https://auth.geeksforgeeks.org/user/kislay_kumar/articles">
-            <div class="box box8">
-                <h2>click here for more articles...</h2>
-            </div>
-        </a>
-
-    </div>
-
-    <div class="social-icons">
-        <a href="https://www.linkedin.com/in/kislay-kumar-a49a1316b/"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/kislayykumar"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/kislayy.kumar/"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/kislayy.kumar/"><i class="fab fa-facebook"></i></a>
-        <a href="https://x.com/kislayy_kumar"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.quora.com/profile/Kislay-Kumar-182"><i class="fab fa-quora"></i></a>
-        <a href="https://www.geeksforgeeks.org/user/kislay_kumar/"><img src="geeksforgeeks.png" width="45px" height="40px" alt=""></i></a>
-        <a href="https://leetcode.com/u/kislay__kumar/"><img src="leetcode.png" width="45px" height="40px" alt=""></i></a>
-      </div>
-
-    <footer>&copy; Copyright 2024 KISLAY KUMAR</footer>
+    <footer>&copy; 2024 Kislay Kumar</footer>
 
     <script>
-
         document.getElementById("menuIcon").addEventListener("click", function () {
             var mobileNavContent = document.getElementById("mobileNavContent");
             var blackBlur = document.getElementById("blackBlur");
@@ -416,9 +722,8 @@
             }
         });
 
-
         document.getElementById("blackBlur").addEventListener("click", function () {
-            var navContent = document.getElementById("mobileNavContent");
+            var mobileNavContent = document.getElementById("mobileNavContent");
             var blackBlur = document.getElementById("blackBlur");
             mobileNavContent.classList.remove("show");
             blackBlur.classList.remove("show");
