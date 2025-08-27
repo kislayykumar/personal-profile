@@ -9,37 +9,49 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>About Me</title>
+
     <style>
+        :root {
+            --primary-color: #1a2238; /* Navy */
+            --primary-text: #23272f;
+            --background: #f7f7fa;
+            --boxcolor: #fff;
+            --accent: #eaeaea;
+            --button-bg: #1a2238;
+            --button-hover: #ffd700; /* Gold */
+            --button-text: #fff;
+            --shadow: 0 4px 24px rgba(26, 34, 56, 0.08);
+            --highlight: #ffd700; /* Gold */
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #feb300;
-            --primary-text: black;
-            --background: #fff5d7;
-            --boxcolor: #fbf579;
-        }
-
         body {
-            background-color: var(--background);
+            background: linear-gradient(120deg, #f7f7fa 0%, #eaeaea 100%);
             color: var(--primary-text);
-            font-family: Arial, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s, color 0.3s;
         }
 
         nav {
-            background-color: var(--primary-color);
+            background: var(--primary-color);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             max-width: 100vw;
             height: 60px;
-            padding: 0 20px;
+            padding: 0 32px;
             align-items: center;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 18px 18px;
+            color: #fff;
         }
 
         .menu-icon {
@@ -54,50 +66,562 @@
         .menu-icon div {
             width: 100%;
             height: 4px;
-            background-color: var(--primary-text);
+            background-color: var(--highlight);
+            border-radius: 2px;
+            box-shadow: 0 1px 2px rgba(26,34,56,0.10);
         }
 
         .button {
             display: inline-block;
-            padding: 10px 15px;
-            font-size: 14px;
+            padding: 10px 22px;
+            font-size: 15px;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
             outline: none;
-            color: black;
-            background-color: #f3e084;
+            color: var(--button-text);
+            background: var(--button-bg);
             border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px #ff5e6c;
-            transition: all 0.3s;
+            border-radius: 22px;
+            box-shadow: 0 2px 8px rgba(26, 34, 56, 0.10);
+            transition: background 0.3s, color 0.3s, transform 0.2s;
         }
 
         .button:hover {
-            background-color: #ff5e6c;
-            transform: translateY(-3px);
-            color: white;
-            box-shadow: 0 10px #f3e084;
+            background: var(--button-hover);
+            color: var(--primary-color);
+            transform: translateY(-2px) scale(1.04);
         }
 
         .button:active {
-            background-color: #fe3d4d;
-            box-shadow: 0 5px #fbde4f;
-            transform: translateY(4px);
+            background: #1d4ed8;
+            box-shadow: 0 1px 2px rgba(26, 34, 56, 0.10);
+            transform: translateY(1px);
         }
 
         .name {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2em;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .name a {
             text-decoration: none;
-            color: var(--primary-text);
-            transition: color 0.3s;
+            color: var(--highlight);
+            transition: color 0.3s ease;
         }
+
+        .name a:hover {
+            color: #fff;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-content ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-content ul li a {
+            text-decoration: none;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0 60px 0;
+            background: linear-gradient(135deg, #1a2238 0%, #2c3454 50%, #1a2238 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffd700" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffd700" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffd700" opacity="0.15"/><circle cx="10" cy="60" r="0.5" fill="%23ffd700" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5em, 6vw, 4em);
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+            text-align: center;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8)); }
+        }
+
+        .hero p {
+            color: #e0e6ff;
+            font-size: clamp(1.1em, 2.5vw, 1.4em);
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .container {
+            max-width: min(800px, 90vw);
+            margin: clamp(40px, 8vw, 80px) auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+        }
+
+        .thank-you-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
+            border-radius: clamp(16px, 3vw, 24px);
+            box-shadow: 0 8px 32px rgba(26, 34, 56, 0.08), 
+                        0 4px 16px rgba(26, 34, 56, 0.04);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(26, 34, 56, 0.08);
+            padding: clamp(40px, 8vw, 60px);
+            text-align: center;
+        }
+
+        .thank-you-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--highlight));
+            border-radius: clamp(16px, 3vw, 24px) clamp(16px, 3vw, 24px) 0 0;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 32px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .thank-you-card h1 {
+            color: var(--primary-color);
+            font-size: clamp(2em, 5vw, 2.8em);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .thank-you-card h2 {
+            color: #666;
+            font-size: clamp(1.2em, 3vw, 1.6em);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .action-btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn.primary {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .action-btn.primary:hover {
+            background: var(--highlight);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .action-btn.secondary:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 34, 56, 0.2);
+        }
+
+        .social-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(26, 34, 56, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(26, 34, 56, 0.1);
+        }
+
+        .social-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 2em;
+            background: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 34, 56, 0.1);
+            border: 2px solid transparent;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            color: var(--highlight);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(26, 34, 56, 0.2);
+            border-color: var(--highlight);
+        }
+
+        .social-icons img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        footer {
+            background: var(--primary-color);
+            min-height: 48px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.1em;
+            margin-top: auto;
+            box-shadow: 0 -2px 12px rgba(26, 34, 56, 0.08);
+            letter-spacing: 1px;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                display: none;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+
+            .nav-content.mobile-menu {
+                display: flex;
+                position: fixed;
+                top: 60px;
+                right: 0;
+                width: 80vw;
+                max-width: 350px;
+                height: 100%;
+                background: #fff;
+                box-shadow: -2px 0 16px rgba(26, 34, 56, 0.10);
+                flex-direction: column;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1001;
+                border-top-left-radius: 18px;
+                border-bottom-left-radius: 18px;
+                padding-top: 32px;
+                padding-bottom: 32px;
+            }
+
+            .nav-content.mobile-menu ul {
+                flex-direction: column;
+                gap: 20px;
+                font-size: 1.1em;
+                width: 100%;
+                padding: 0 18px;
+            }
+
+            .nav-content.mobile-menu ul li {
+                width: 100%;
+                margin-bottom: 18px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-content.mobile-menu ul li:last-child {
+                margin-bottom: 0;
+            }
+
+            .nav-content.mobile-menu ul li a .button {
+                width: 100%;
+                max-width: 260px;
+                margin: 0 auto;
+                background: var(--button-bg);
+                color: var(--button-text) !important;
+                border: none;
+                border-radius: 22px;
+                padding: 12px 0;
+                font-size: 1.08em;
+                font-weight: 600;
+                text-align: center;
+                box-shadow: 0 2px 8px rgba(26, 34, 56, 0.10);
+                transition: background 0.3s, color 0.3s, transform 0.2s;
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+
+            .nav-content.mobile-menu ul li a .button:hover {
+                background: var(--button-hover);
+                color: var(--primary-color) !important;
+                transform: translateY(-2px) scale(1.04);
+            }
+
+            .nav-content.mobile-menu.show {
+                transform: translateX(0);
+            }
+
+            .black-blur {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.18);
+                backdrop-filter: blur(2px);
+                z-index: 1000;
+                display: none;
+            }
+
+            .black-blur.show {
+                display: block;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-btn {
+                width: 200px;
+                justify-content: center;
+            }
+
+            .social-icons {
+                gap: 15px;
+            }
+
+            .social-icons a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+            }
+
+            .social-icons img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thank-you-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+    <title>Thank You || Kislay Kumar</title>
+</head>
+
+<body>
+    <div class="black-blur" id="blackBlur"></div>
+    <nav>
+        <div class="name">
+            <p><a href="index.html">KISLAY</a></p>
+        </div>
+        <div class="menu-icon" id="menuIcon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-content" id="navContent">
+            <ul>
+                <li><a href="index.html"><button class="button">Home</button></a></li>
+                <li><a href="about.html"><button class="button">About</button></a></li>
+                <li><a href="project.html"><button class="button">Project</button></a></li>
+                <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
+                <li><a href="contact.html"><button class="button">Contact</button></a></li>
+            </ul>
+        </div>
+        <div class="nav-content mobile-menu" id="mobileNavContent">
+            <ul>
+                <li><a href="index.html"><button class="button">Home</button></a></li>
+                <li><a href="about.html"><button class="button">About</button></a></li>
+                <li><a href="project.html"><button class="button">Project</button></a></li>
+                <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
+                <li><a href="contact.html"><button class="button">Contact</button></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Message Received!</h1>
+        <p>Thank you for reaching out. Your message has been successfully sent.</p>
+    </section>
+
+    <div class="container">
+        <div class="thank-you-card">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            
+            <h1>Thank You for Contacting Me!</h1>
+            <h2>I appreciate you taking the time to reach out. I will review your message and get back to you as soon as possible, typically within 24-48 hours.</h2>
+
+            <div class="action-buttons">
+                <a href="index.html" class="action-btn primary">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </a>
+                <a href="contact.html" class="action-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Send Another Message
+                </a>
+            </div>
+
+            <div class="social-section">
+                <h3>Connect with me on social media</h3>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/kislay-kumar-a49a1316b/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/kislayykumar" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/kislayy.kumar/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/kislayy.kumar/" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/kislayy_kumar" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.quora.com/profile/Kislay-Kumar-182" title="Quora"><i class="fab fa-quora"></i></a>
+                    <a href="https://www.geeksforgeeks.org/user/kislay_kumar/" title="GeeksForGeeks"><img src="geeksforgeeks.png" alt="GeeksForGeeks"></a>
+                    <a href="https://leetcode.com/u/kislay__kumar/" title="LeetCode"><img src="leetcode.png" alt="LeetCode"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>&copy; 2024 Kislay Kumar</footer>
+
+    <script>
+        document.getElementById("menuIcon").addEventListener("click", function () {
+            var mobileNavContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            mobileNavContent.classList.toggle("show");
+            blackBlur.classList.toggle("show");
+        });
+
+        window.addEventListener("resize", function () {
+            var mobileNavContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            if (window.innerWidth > 768) {
+                mobileNavContent.classList.remove("show");
+                blackBlur.classList.remove("show");
+            }
+        });
+
+        document.getElementById("blackBlur").addEventListener("click", function () {
+            var mobileNavContent = document.getElementById("mobileNavContent");
+            var blackBlur = document.getElementById("blackBlur");
+            mobileNavContent.classList.remove("show");
+            blackBlur.classList.remove("show");
+        });
+
+        // Add entrance animation delay
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.thank-you-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 200);
+        });
+    </script>
+</body>
+
+</html>
 
         .name a:hover {
             color: #1760af;
