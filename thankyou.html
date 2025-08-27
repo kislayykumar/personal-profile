@@ -306,53 +306,306 @@
 
         .social-section {
             margin-top: 50px;
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(26, 34, 56, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
-            border-radius: 16px;
-            border: 1px solid rgba(26, 34, 56, 0.1);
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(26, 34, 56, 0.03) 0%, rgba(255, 215, 0, 0.05) 50%, rgba(26, 34, 56, 0.03) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(26, 34, 56, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="social-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="%23ffd700" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23social-pattern)"/></svg>') repeat;
+            pointer-events: none;
         }
 
         .social-section h3 {
             color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 1.4em;
+            margin-bottom: 30px;
+            font-size: clamp(1.2em, 3vw, 1.6em);
             text-align: center;
+            position: relative;
+            z-index: 2;
+            font-weight: 600;
+        }
+
+        .social-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--highlight), #ffed4e);
+            border-radius: 2px;
+        }
+
+        .social-section h3 i {
+            margin-right: 10px;
+            color: var(--highlight);
+        }
+
+        .social-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            line-height: 1.5;
         }
 
         .social-icons {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 20px;
-            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            position: relative;
+            z-index: 2;
         }
 
         .social-icons a {
             color: var(--primary-color);
-            font-size: 2em;
-            background: #fff;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            font-size: 1.8em;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
+            border-radius: 16px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(26, 34, 56, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(26, 34, 56, 0.08);
             border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .social-icons a:hover .tooltip {
+            opacity: 1;
+            bottom: -40px;
+        }
+
+        /* Social Stats Section */
+        .social-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(26, 34, 56, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-stat {
+            text-align: center;
+        }
+
+        .social-stat .stat-number {
+            display: block;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .social-stat .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-icons a:hover::before {
+            left: 100%;
         }
 
         .social-icons a:hover {
-            background: var(--primary-color);
-            color: var(--highlight);
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(26, 34, 56, 0.2);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(26, 34, 56, 0.15);
             border-color: var(--highlight);
         }
 
+        /* Platform-specific colors on hover */
+        .social-icons a[href*="linkedin"]:hover {
+            background: linear-gradient(145deg, #0077b5, #005885);
+            color: white;
+        }
+
+        .social-icons a[href*="github"]:hover {
+            background: linear-gradient(145deg, #333, #24292e);
+            color: white;
+        }
+
+        .social-icons a[href*="instagram"]:hover {
+            background: linear-gradient(145deg, #e4405f, #c13584);
+            color: white;
+        }
+
+        .social-icons a[href*="facebook"]:hover {
+            background: linear-gradient(145deg, #1877f2, #166fe5);
+            color: white;
+        }
+
+        .social-icons a[href*="twitter"]:hover,
+        .social-icons a[href*="x.com"]:hover {
+            background: linear-gradient(145deg, #1da1f2, #0d8bd9);
+            color: white;
+        }
+
+        .social-icons a[href*="quora"]:hover {
+            background: linear-gradient(145deg, #b92b27, #a02622);
+            color: white;
+        }
+
+        .social-icons a[href*="geeksforgeeks"]:hover {
+            background: linear-gradient(145deg, #0f9d58, #0d8043);
+        }
+
+        .social-icons a[href*="leetcode"]:hover {
+            background: linear-gradient(145deg, #ffa116, #ff8c00);
+        }
+
         .social-icons img {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        /* Enhanced mobile social icons */
+        @media (max-width: 768px) {
+            .social-section {
+                padding: 30px 20px;
+                margin-top: 40px;
+            }
+
+            .social-subtitle {
+                font-size: 1em;
+                margin-bottom: 25px;
+            }
+
+            .social-icons {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+                max-width: 320px;
+                margin-bottom: 30px;
+            }
+
+            .social-icons a {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5em;
+                border-radius: 12px;
+            }
+
+            .social-icons img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .social-stats {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .social-stat .stat-number {
+                font-size: 1.3em;
+            }
+
+            .social-stat .stat-label {
+                font-size: 0.8em;
+            }
+
+            .tooltip {
+                font-size: 0.7em;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-icons {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+
+            .social-icons a {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3em;
+            }
+
+            .social-icons img {
+                width: 25px;
+                height: 25px;
+            }
+
+            .social-stats {
+                gap: 15px;
+            }
+
+            .social-stat .stat-number {
+                font-size: 1.2em;
+            }
+
+            .social-stat .stat-label {
+                font-size: 0.75em;
+            }
         }
 
         footer {
@@ -565,16 +818,55 @@
             </div>
 
             <div class="social-section">
-                <h3>Connect with me on social media</h3>
+                <h3><i class="fas fa-share-alt"></i> Let's Stay Connected</h3>
+                <p class="social-subtitle">Follow my journey and connect with me across these platforms</p>
                 <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/kislay-kumar-a49a1316b/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/kislayykumar" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/kislayy.kumar/" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/kislayy.kumar/" title="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="https://x.com/kislayy_kumar" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.quora.com/profile/Kislay-Kumar-182" title="Quora"><i class="fab fa-quora"></i></a>
-                    <a href="https://www.geeksforgeeks.org/user/kislay_kumar/" title="GeeksForGeeks"><img src="geeksforgeeks.png" alt="GeeksForGeeks"></a>
-                    <a href="https://leetcode.com/u/kislay__kumar/" title="LeetCode"><img src="leetcode.png" alt="LeetCode"></a>
+                    <a href="https://www.linkedin.com/in/kislay-kumar-a49a1316b/" title="LinkedIn - Professional Network" class="social-link" data-platform="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                        <span class="tooltip">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/kislayykumar" title="GitHub - Open Source Projects" class="social-link" data-platform="GitHub">
+                        <i class="fab fa-github"></i>
+                        <span class="tooltip">GitHub</span>
+                    </a>
+                    <a href="https://www.instagram.com/kislayy.kumar/" title="Instagram - Personal Updates" class="social-link" data-platform="Instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span class="tooltip">Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/kislayy.kumar/" title="Facebook - Connect & Share" class="social-link" data-platform="Facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span class="tooltip">Facebook</span>
+                    </a>
+                    <a href="https://x.com/kislayy_kumar" title="X (Twitter) - Tech Updates" class="social-link" data-platform="Twitter">
+                        <i class="fab fa-twitter"></i>
+                        <span class="tooltip">X (Twitter)</span>
+                    </a>
+                    <a href="https://www.quora.com/profile/Kislay-Kumar-182" title="Quora - Knowledge Sharing" class="social-link" data-platform="Quora">
+                        <i class="fab fa-quora"></i>
+                        <span class="tooltip">Quora</span>
+                    </a>
+                    <a href="https://www.geeksforgeeks.org/user/kislay_kumar/" title="GeeksForGeeks - Technical Articles" class="social-link" data-platform="GeeksForGeeks">
+                        <img src="geeksforgeeks.png" alt="GeeksForGeeks">
+                        <span class="tooltip">GeeksForGeeks</span>
+                    </a>
+                    <a href="https://leetcode.com/u/kislay__kumar/" title="LeetCode - Coding Practice" class="social-link" data-platform="LeetCode">
+                        <img src="leetcode.png" alt="LeetCode">
+                        <span class="tooltip">LeetCode</span>
+                    </a>
+                </div>
+                <div class="social-stats">
+                    <div class="social-stat">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Platforms</span>
+                    </div>
+                    <div class="social-stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Connections</span>
+                    </div>
+                    <div class="social-stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Available</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -617,6 +909,100 @@
                 card.style.opacity = '1';
                 card.style.transform = 'translateY(0)';
             }, 200);
+
+            // Animate social icons with stagger effect
+            const socialIcons = document.querySelectorAll('.social-icons a');
+            socialIcons.forEach((icon, index) => {
+                icon.style.opacity = '0';
+                icon.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    icon.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    icon.style.opacity = '1';
+                    icon.style.transform = 'translateY(0)';
+                }, 800 + (index * 100));
+            });
+
+            // Add click tracking for social links
+            socialIcons.forEach(icon => {
+                icon.addEventListener('click', function(e) {
+                    const platform = this.getAttribute('data-platform');
+                    console.log(`Clicked on ${platform} social link`);
+                    
+                    // Add a ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 215, 0, 0.6)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.width = '100px';
+                    ripple.style.height = '100px';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.marginLeft = '-50px';
+                    ripple.style.marginTop = '-50px';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add ripple animation keyframes
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Counter animation for social stats
+            function animateCounter(element, target) {
+                let current = 0;
+                const increment = target / 30;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current) + (target >= 100 ? '+' : target === 24 ? '/7' : '');
+                }, 50);
+            }
+
+            // Intersection Observer for stats animation
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumbers = entry.target.querySelectorAll('.stat-number');
+                        statNumbers.forEach(stat => {
+                            const originalText = stat.textContent;
+                            let target;
+                            if (originalText.includes('500')) target = 500;
+                            else if (originalText.includes('24')) target = 24;
+                            else if (originalText.includes('8')) target = 8;
+                            
+                            if (target) {
+                                animateCounter(stat, target);
+                            }
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const socialStats = document.querySelector('.social-stats');
+            if (socialStats) {
+                statsObserver.observe(socialStats);
+            }
         });
     </script>
 </body>
