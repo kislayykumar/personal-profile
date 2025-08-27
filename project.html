@@ -9,82 +9,95 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <title>Projects || Kislay Kumar</title>
     <style>
+        :root {
+            --primary-color: #1a2238; /* Navy */
+            --primary-text: #23272f;
+            --background: #f7f7fa;
+            --boxcolor: #fff;
+            --accent: #eaeaea;
+            --button-bg: #1a2238;
+            --button-hover: #ffd700; /* Gold */
+            --button-text: #fff;
+            --shadow: 0 4px 24px rgba(26, 34, 56, 0.08);
+            --highlight: #ffd700; /* Gold */
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #feb300;
-            --primary-text: black;
-            --background: #fff5d7;
-            --boxcolor: #fbf579;
-        }
-
         body {
-            background-color: var(--background);
+            background: linear-gradient(120deg, #f7f7fa 0%, #eaeaea 100%);
             color: var(--primary-text);
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s, color 0.3s;
         }
 
         nav {
-            background-color: var(--primary-color);
+            background: var(--primary-color);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             max-width: 100vw;
             height: 60px;
-            padding: 0 20px;
+            padding: 0 32px;
+            align-items: center;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 18px 18px;
+            color: #fff;
         }
 
         .menu-icon {
             display: none;
             flex-direction: column;
             justify-content: space-around;
-            width: 39px;
-            height: 41px;
-            margin: 5px 2px;
+            width: 30px;
+            height: 30px;
             cursor: pointer;
         }
 
         .menu-icon div {
             width: 100%;
             height: 4px;
-            background-color: var(--primary-text);
+            background-color: var(--highlight);
+            border-radius: 2px;
+            box-shadow: 0 1px 2px rgba(26,34,56,0.10);
         }
 
         .button {
             display: inline-block;
-            padding: 10px 15px;
-            font-size: 14px;
+            padding: 10px 22px;
+            font-size: 15px;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
             outline: none;
-            color: black;
-            background-color: #f3e084;
+            color: var(--button-text);
+            background: var(--button-bg);
             border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px #ff5e6c;
-            transition: all 0.3s;
+            border-radius: 22px;
+            box-shadow: 0 2px 8px rgba(26, 34, 56, 0.10);
+            transition: background 0.3s, color 0.3s, transform 0.2s;
         }
 
         .button:hover {
-            background-color: #ff5e6c;
-            transform: translateY(-3px);
-            color: white;
-            box-shadow: 0 10px #f3e084;
+            background: var(--button-hover);
+            color: var(--primary-color);
+            transform: translateY(-2px) scale(1.04);
         }
 
         .button:active {
-            background-color: #fe3d4d;
-            box-shadow: 0 5px #fbde4f;
-            transform: translateY(4px);
+            background: #1d4ed8;
+            box-shadow: 0 1px 2px rgba(26, 34, 56, 0.10);
+            transform: translateY(1px);
         }
-
 
         .name {
             display: flex;
@@ -95,7 +108,14 @@
 
         .name a {
             text-decoration: none;
-            color: var(--primary-text);
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .name a:hover {
+            color: #ffd700;
         }
 
         .nav-content {
@@ -114,49 +134,316 @@
 
         .nav-content ul li a {
             text-decoration: none;
-            color: var(--primary-text);
+            color: #fff;
+            transition: color 0.3s;
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
+        .nav-content ul li a:hover {
+            color: #ffd700;
         }
-
 
         .nav-content.mobile-menu {
             display: none;
         }
 
-        .black-blur {
-            display: none;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            height: 40px;
-            width: 100%;
+        .hero {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            padding: 80px 0 60px 0;
+            background: linear-gradient(135deg, #1a2238 0%, #2c3454 50%, #1a2238 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .social-icons {
-            margin-top: 20px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffd700" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffd700" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffd700" opacity="0.15"/><circle cx="10" cy="60" r="0.5" fill="%23ffd700" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5em, 6vw, 4.5em);
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
             text-align: center;
         }
 
-        .social-icons a {
-            margin: 0 10px;
-            color: var(--primary-text);
-            font-size: 50px;
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8)); }
         }
 
-        .social-icons a:hover {
-            color: blue;
+        .hero p {
+            color: #e0e6ff;
+            font-size: clamp(1.1em, 2.5vw, 1.4em);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+            text-align: center;
+            max-width: 600px;
         }
 
-        .social-icons a img:hover {
-            background: blue;
+        /* Project Statistics */
+        .stats-section {
+            background: var(--primary-color);
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: clamp(2.5em, 5vw, 3.5em);
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: clamp(0.9em, 2vw, 1.1em);
+            color: #e0e6ff;
+            font-weight: 500;
+        }
+
+        /* Project Filters */
+        .filters-section {
+            text-align: center;
+            margin: 60px 0 40px 0;
+        }
+
+        .filters-title {
+            font-size: clamp(1.8em, 4vw, 2.5em);
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 34, 56, 0.3);
+        }
+
+        /* Enhanced Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(26, 34, 56, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid rgba(26, 34, 56, 0.05);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--highlight));
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(26, 34, 56, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(26, 34, 56, 0.8), rgba(255, 215, 0, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .project-link:hover {
+            transform: scale(1.1);
+            background: var(--highlight);
+            color: var(--primary-color);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(26, 34, 56, 0.1);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(26, 34, 56, 0.1);
+        }
+
+        .project-date {
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        .project-status {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .status-completed {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .status-ongoing {
+            background: rgba(251, 191, 36, 0.1);
+            color: #fbbf24;
         }
 
         .project-seq {
@@ -164,89 +451,352 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 50px;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 60px auto 40px auto;
+            padding: 0 20px;
         }
 
         .head-box {
-            width: 159px;
-            height: 59px;
-            background-color: antiquewhite;
-            margin-top: 16px;
-            border-radius: 20px;
-        }
-
-
-        .project-main {
-            width: 98vw;
-        }
-
-        .head-box {
+            width: 200px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--button-bg) 0%, #2c3454 100%);
+            margin-top: 0;
+            border-radius: 35px;
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 8px 32px rgba(26, 34, 56, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .head-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .head-box:hover::before {
+            left: 100%;
+        }
+
+        .head-box:hover {
+            background: linear-gradient(135deg, var(--button-hover) 0%, #ffed4e 100%);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
         }
 
         .project-seq a {
-            color: #000000;
-            font-size: 20px;
-
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
         }
 
-        .project-seq a:hover {
-            color: red;
+        .head-box:hover a {
+            color: var(--primary-color);
+            text-shadow: 0 2px 8px rgba(26, 34, 56, 0.2);
         }
 
         .container {
-            width: 80%;
-            margin: 3% 9%;
-            height: 400px;
-            background-color: var(--boxcolor);
-            border-radius: 20px;
-            border: 4px solid rgb(0, 0, 0);
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
+            border-radius: 24px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(26, 34, 56, 0.08), 
+                        0 8px 25px rgba(26, 34, 56, 0.05),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--highlight), var(--primary-color));
+            border-radius: 24px 24px 0 0;
+        }
+
+        .container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(26, 34, 56, 0.12), 
+                        0 12px 35px rgba(26, 34, 56, 0.08),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
         }
 
         .container h1 {
-            margin-top: 2px;
+            color: var(--primary-color);
+            margin-bottom: 32px;
+            font-size: 2.2em;
+            font-weight: 700;
+            position: relative;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .container h1::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--highlight), #ffed4e);
+            border-radius: 2px;
         }
 
         .inside {
             display: flex;
             justify-content: space-between;
+            gap: 40px;
+            align-items: flex-start;
         }
 
         .left {
-            width: 30%;
-            margin: 0 3%;
-            overflow: hidden;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .left img {
-            width: 350px;
-            height: 250px;
-            border-radius: 15px;
-
+            width: 100%;
+            max-width: 400px;
+            height: 280px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 15px 40px rgba(26, 34, 56, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 3px solid transparent;
         }
 
         .left img:hover {
-            border: 3px solid black;
+            transform: scale(1.05) rotateY(5deg);
+            box-shadow: 0 25px 60px rgba(26, 34, 56, 0.25);
+            border-color: rgba(255, 215, 0, 0.3);
         }
 
         .left a {
-            font-size: 50px;
-            color: #000000;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-top: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 16px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #f8f9fc, #ffffff);
+            box-shadow: 0 8px 25px rgba(26, 34, 56, 0.1);
+            border: 2px solid transparent;
         }
 
         .left a:hover {
-            color: #1a07a8;
+            color: var(--highlight);
+            transform: scale(1.2) rotate(360deg);
+            background: linear-gradient(145deg, #fff, #f0f2ff);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
         }
 
         .right {
-            position: relative;
-            margin: 15px;
-            width: 60%;
+            width: 55%;
             text-align: justify;
+            color: #4a5568;
+            font-size: 1.15em;
+            line-height: 1.8;
+            position: relative;
         }
 
+        .right p {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .right p:first-child::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, var(--highlight), #ffed4e);
+            border-radius: 2px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2c3454 100%);
+            padding: 80px 0;
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cta-pattern" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffd700" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23cta-pattern)"/></svg>') repeat;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta-title {
+            font-size: clamp(2em, 5vw, 3em);
+            color: white;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-text {
+            color: #e0e6ff;
+            font-size: clamp(1.1em, 2.5vw, 1.3em);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-btn.primary {
+            background: var(--highlight);
+            color: var(--primary-color);
+            border: 2px solid var(--highlight);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-btn.secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background: var(--primary-color);
+            min-height: 48px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.1em;
+            margin-top: auto;
+            box-shadow: 0 -2px 12px rgba(26, 34, 56, 0.08);
+            letter-spacing: 1px;
+            padding: 20px 0;
+        }
+
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .container:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .container:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+
+        @media (max-width: 1100px) {
+            .inside {
+                flex-direction: column;
+                gap: 32px;
+                align-items: center;
+            }
+            .left, .right {
+                width: 100%;
+            }
+            .left {
+                order: 1;
+            }
+            .right {
+                order: 2;
+                text-align: center;
+            }
+            .container {
+                width: 95%;
+                height: auto;
+                padding: 32px 24px;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+        }
 
         @media (max-width: 768px) {
             .nav-content {
@@ -257,31 +807,70 @@
                 display: flex;
             }
 
-            .main-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .nav-content.mobile-menu {
                 position: fixed;
                 top: 60px;
                 right: 0;
-                width: 70%;
+                width: 80vw;
+                max-width: 350px;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);;
+                background: #fff;
+                box-shadow: -2px 0 16px rgba(26, 34, 56, 0.10);
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 transform: translateX(100%);
                 transition: transform 0.3s ease-in-out;
-                z-index: 1;
+                z-index: 1001;
+                border-top-left-radius: 18px;
+                border-bottom-left-radius: 18px;
+                padding-top: 32px;
+                padding-bottom: 32px;
             }
 
             .nav-content.mobile-menu ul {
                 flex-direction: column;
                 gap: 20px;
-                font-size: 1.2em;
-                padding: 20px 0;
+                font-size: 1.1em;
+                padding: 32px 0;
+                width: 100%;
+                padding: 0 18px;
+            }
+
+            .nav-content.mobile-menu ul li {
+                width: 100%;
+                margin-bottom: 18px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-content.mobile-menu ul li:last-child {
+                margin-bottom: 0;
+            }
+
+            .nav-content.mobile-menu ul li a .button {
+                width: 100%;
+                max-width: 260px;
+                margin: 0 auto;
+                background: var(--button-bg);
+                color: var(--button-text) !important;
+                border: none;
+                border-radius: 22px;
+                padding: 12px 0;
+                font-size: 1.08em;
+                font-weight: 600;
+                text-align: center;
+                box-shadow: 0 2px 8px rgba(26, 34, 56, 0.10);
+                transition: background 0.3s, color 0.3s, transform 0.2s;
+                text-decoration: none;
+                letter-spacing: 1px;
+            }
+
+            .nav-content.mobile-menu ul li a .button:hover {
+                background: var(--button-hover);
+                color: var(--primary-color) !important;
+                transform: translateY(-2px) scale(1.04);
             }
 
             .nav-content.mobile-menu.show {
@@ -292,11 +881,11 @@
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.7);
-                backdrop-filter: blur(5px);
-                z-index: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.18);
+                backdrop-filter: blur(2px);
+                z-index: 1000;
                 display: none;
             }
 
@@ -304,39 +893,114 @@
                 display: block;
             }
 
+            .hero {
+                padding: 60px 0 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+                padding: 0 20px;
+                text-align: center;
+            }
+
             .project-seq {
-                gap: 5px;
+                gap: 16px;
+                margin: 40px auto 32px auto;
+                padding: 0 10px;
+            }
+
+            .head-box {
+                width: 160px;
+                height: 60px;
+                font-size: 14px;
+            }
+
+            .project-seq a {
+                font-size: 14px;
+                letter-spacing: 1px;
             }
 
             .container {
-                width: 97%;
-                margin: 3% 3%;
-                height: 500px;
-                background-color: var(--boxcolor);
-                border-radius: 20px;
-                border: 4px solid rgb(0, 0, 0);
+                width: 95%;
+                margin: 24px auto;
+                height: auto;
+                padding: 24px 20px;
+                margin-bottom: 80px;
             }
 
-            .left {
-                height: 141px;
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                gap: 5px;
-            }
-
-            .left img {
-                width: 261px;
-                height: 140px;
-                border-radius: 13px
+            .container h1 {
+                font-size: 1.8em;
+                margin-bottom: 24px;
             }
 
             .inside {
-                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            .left {
+                width: 100%;
+            }
+
+            .left img {
+                max-width: 320px;
+                height: 220px;
+            }
+
+            .left a {
+                font-size: 2em;
+                margin-top: 16px;
             }
 
             .right {
-                width: 94%;
+                width: 100%;
+                font-size: 1em;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .project-content {
+                padding: 20px;
+            }
+
+            .project-tech {
+                gap: 6px;
+            }
+
+            .tech-tag {
+                font-size: 0.75em;
+                padding: 4px 8px;
+            }
+
+            .right {
+                text-align: left;
+            }
+
+            .right p {
+                padding-left: 15px;
             }
 
             .p2 {
@@ -362,7 +1026,6 @@
             <ul>
                 <li><a href="index.html"><button class="button">Home</button></a></li>
                 <li><a href="about.html"><button class="button">About</button></a></li>
-                <li><a href="resume.html"><button class="button">Resume</button></a></li>
                 <li><a href="project.html"><button class="button">Project</button></a></li>
                 <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
                 <li><a href="contact.html"><button class="button">Contact</button></a></li>
@@ -372,7 +1035,6 @@
             <ul>
                 <li><a href="index.html"><button class="button">Home</button></a></li>
                 <li><a href="about.html"><button class="button">About</button></a></li>
-                <li><a href="resume.html"><button class="button">Resume</button></a></li>
                 <li><a href="project.html"><button class="button">Project</button></a></li>
                 <li><a href="article.html"><button class="button">Technical Articles</button></a></li>
                 <li><a href="contact.html"><button class="button">Contact</button></a></li>
@@ -380,185 +1042,186 @@
         </div>
     </nav>
 
-    <div class="project-seq">
-        <a href="#p1">
-            <div class="head-box">Project 1</div>
-        </a>
-        <a href="#p2">
-            <div class="head-box">Project 2</div>
-        </a>
-        <a href="#p3">
-            <div class="head-box">Project 3</div>
-        </a>
-        <a href="#p4">
-            <div class="head-box">Project 4</div>
-        </a>
-    </div>
-    <div class="project-main">
+    <section class="hero">
+        <h1>Projects</h1>
+        <p>Explore my development projects and technical achievements.</p>
+    </section>
 
-        <div class="container container1" id="p1">
-            <h1>Securing Virtual Market Places</h1>
-            <div class="inside">
-                <div class="left">
-                    <img src="https://assets-global.website-files.com/64248e7fd5f30d79c9e57d64/64b445b1d679d35910f024ca_Omnichannel.jpeg"
-                        alt="">
-
-                    <div class="icon-box">
-                        <a href="https://github.com/kislayykumar/Ecommerce-Security-portal.git"><i
-                                class="fab fa-github"></i></a>
-                        <a href="https://youtu.be/Si4HpHb_xxs?si=FZoyCMdwf6z80hdd"><i class="fab fa-youtube"></i></a>
-                        <a href="https://kislayykumar.github.io/Ecommerce-Security-portal/"><i class="fas fa-globe"></i></a>
-                    </div>
-
-                </div>
-                <div class="right">
-                    <p class="p1">The comprehensive fraud detection system incorporates a blend of machine learning,
-                        deep learning,
-                        and genetic algorithms to effectively identify and classify fraudulent activities in both online
-                        transactions and website authenticity. By analyzing various features such as URL age, presence
-                        of anchor tags, and transaction patterns, this advanced system aids users in determining the
-                        legitimacy of websites and prevents payment fraud in credit card transactions.
-                    </p>
-                    <br>
-                    <p class="p2">
-                        Utilizing a diverse range of algorithms including Decision Trees, Random Forest, Deep Neural
-                        Networks (DNN), Multilayer Perceptron (MLP), and genetic algorithms, the system ensures robust
-                        detection and classification capabilities. This adaptable solution can be seamlessly integrated
-                        into web applications, offering broad utility for users seeking enhanced security against both
-                        phishing attempts and fraudulent transactions.
-                    </p>
-
-                </div>
+    <section class="projects-section" style="margin-bottom: 80px;">
+        <div class="filters-section">
+            <h2 class="filters-title">Filter Projects</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="data">Data Science</button>
+                <button class="filter-btn" data-filter="security">Security</button>
             </div>
-
         </div>
 
-        <div class="container container2" id="p2">
-
-            <h1>Forecasting COVID 19 using ARIMA Model</h1>
-            <div class="inside">
-                <div class="left">
-                    <img src="https://www.un.org/sites/un2.un.org/files/field/image/1583952355.1997.jpg" alt="">
-                    <a href="https://github.com/kislayykumar/FORECASTING-COVID-19-USING-ARIMA-MODEL.git"><i
-                            class="fab fa-github"></i></a>
+        <div class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">Total Projects</span>
                 </div>
-                <div class="right">
-                    <p class="p1">
-                        we provide technique for predicting upcoming cases based on historical information. Two
-                        strategies,
-                        one for predicting the likelihood of contracting the infection and the other for forecasting the
-                        number of
-                        positive cases, are described using machine learning techniques. 
-                        It is discussed how to forecast confirmed cases for different Indian states using ARIMA Model.
-                    </p>
-                    <br>
-                    <p class="p2">
-                        The globe has been frequently threatened by pandemics over the past few years, thus the effects
-                        of these
-                        pandemics have always had a significant impact on it. The present devastating pandemic is also
-                        currently
-                        running its course throughout the world. Not only are economies collapsing, but the general
-                        well-being
-                        and morals of the severely affected countries are also at risk. Understanding the covid-19
-                        virus's natural
-                        progression is crucial for making precise and effective forecasts. New understandings regarding
-                        the
-                        validity of the designed and validated prediction models are revealed as the COVID-19 pandemic
-                        develops
-                        and more data is gathered; nonetheless, projecting the pandemic's future requires open reporting
-                        and
-                        multiple model evaluations.
-                    </p>
-
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Web Apps</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">ML Models</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Data Science</span>
                 </div>
             </div>
-
         </div>
 
-        <div class="container container3" id="p3">
+        <div class="projects-grid">
 
-            <h1>Netflix website clone</h1>
-            <div class="inside">
-                <div class="left">
-                    <img src="https://thenfapost.com/wp-content/uploads/2021/01/netflix.jpg" alt="">
-                    <div class="icon-box">
-                        <a href="https://github.com/kislayykumar/Netflix-clone.git"><i class="fab fa-github"></i></a>
-                        <a href="https://netflixclonebykislayy.vercel.app/"><i class="fas fa-globe"></i></a>
+            <!-- Project 1 -->
+            <div class="project-card" data-category="ml security web" id="p1">
+                <div class="project-image">
+                    <img src="https://assets-global.website-files.com/64248e7fd5f30d79c9e57d64/64b445b1d679d35910f024ca_Omnichannel.jpeg" alt="Securing Virtual Market Places">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://github.com/kislayykumar/Ecommerce-Security-portal.git" class="project-link" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://youtu.be/Si4HpHb_xxs?si=FZoyCMdwf6z80hdd" class="project-link" title="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="https://kislayykumar.github.io/Ecommerce-Security-portal/" class="project-link" title="Live Demo" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="right">
-                    <p class="p1">
-                        Successfully developed a Netflix clone web application using HTML, CSS, and JavaScript. This
-                        project involved creating a user-friendly interface that mimics Netflix's sleek design,
-                        utilizing HTML for structure, CSS for styling, and JavaScript for dynamic content rendering. Key
-                        features implemented include user authentication, personalized profiles, and a responsive grid
-                        layout for displaying movie thumbnails. 
-                    </p>
-                    <br>
-                    <p class="p2">
-                        Additionally, I implemented JavaScript to handle interactive elements such as a carousel for
-                        featured movies and a watch list feature. This project helped me solidify my front-end
-                        development skills and deepen my understanding of responsive design and client-side scripting.
-                        By focusing on performance and usability, I ensured that the application delivers a seamless and
-                        engaging user experience across different devices.
-                    </p>
+                <div class="project-content">
+                    <div class="project-title">Securing Virtual Market Places</div>
+                    <div class="project-description">
+                        Fraud detection system using ML, DL, and genetic algorithms to identify and classify fraudulent activities in online transactions and website authenticity.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Genetic Algorithm</span>
+                        <span class="tech-tag">Web Security</span>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date">2023</span>
+                        <span class="project-status status-completed">Completed</span>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Project 2 -->
+            <div class="project-card" data-category="ml data" id="p2">
+                <div class="project-image">
+                    <img src="https://www.un.org/sites/un2.un.org/files/field/image/1583952355.1997.jpg" alt="Forecasting COVID 19 using ARIMA Model">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://github.com/kislayykumar/FORECASTING-COVID-19-USING-ARIMA-MODEL.git" class="project-link" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Forecasting COVID 19 using ARIMA Model</div>
+                    <div class="project-description">
+                        Predicts upcoming COVID-19 cases using ARIMA and ML techniques, providing insights for Indian states based on historical data.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ARIMA</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Data Science</span>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date">2022</span>
+                        <span class="project-status status-completed">Completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-category="web" id="p3">
+                <div class="project-image">
+                    <img src="https://images.ctfassets.net/4cd45et68cgf/637ArQo6YNsJf48Xw3zUAg/d030f9065a0fe54de777eaa600cf3fcb/N-Games_March_936x622.png" alt="Netflix website clone">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://github.com/kislayykumar/Netflix-clone.git" class="project-link" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://netflixclonebykislayy.vercel.app/" class="project-link" title="Live Demo" target="_blank"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Netflix Website Clone</div>
+                    <div class="project-description">
+                        Responsive Netflix clone with user authentication, personalized profiles, and interactive UI using HTML, CSS, and JavaScript.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Web App</span>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date">2023</span>
+                        <span class="project-status status-completed">Completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-category="ml security" id="p4">
+                <div class="project-image">
+                    <img src="https://cdn.technadu.com/wp-content/uploads/2024/11/Phishing-775x436.jpg" alt="Phishing website detection">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="https://github.com/kislayykumar/PHISHING-WEBSITE-DETECTION-AND-CLASSIFICATION-USING-DATA-MINING.git" class="project-link" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Phishing Website Detection</div>
+                    <div class="project-description">
+                        ML-based system for detecting and classifying phishing websites using features like URL age, anchor tags, and transaction patterns.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Security</span>
+                        <span class="tech-tag">Data Mining</span>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date">2022</span>
+                        <span class="project-status status-completed">Completed</span>
+                    </div>
                 </div>
             </div>
 
         </div>
+    </section>
 
-        <div class="container container4" id="p4">
-
-            <h1>Phishing webiste detection</h1>
-            <div class="inside">
-                <div class="left">
-                    <img src="https://icons4web.com/wp-content/uploads/2018/12/Phishing-vector-icon-276741.jpg" alt="">
-                    <a
-                        href="https://github.com/kislayykumar/PHISHING-WEBSITE-DETECTION-AND-CLASSIFICATION-USING-DATA-MINING.git"><i
-                            class="fab fa-github"></i></a>
-                </div>
-                <div class="right">
-                    <p class="p1">The comprehensive fraud detection system incorporates a blend of machine learning,
-                        deep learning,
-                        and genetic algorithms to effectively identify and classify fraudulent activities in both online
-                        transactions and website authenticity. By analyzing various features such as URL age, presence
-                        of anchor tags, and transaction patterns, this advanced system aids users in determining the
-                        legitimacy of websites and prevents payment fraud in credit card transactions.
-                    </p>
-                    <br>
-                    <p class="p2">
-                        Utilizing a diverse range of algorithms including Decision Trees, Random Forest, Deep Neural
-                        Networks (DNN), Multilayer Perceptron (MLP), and genetic algorithms, the system ensures robust
-                        detection and classification capabilities. This adaptable solution can be seamlessly integrated
-                        into web applications, offering broad utility for users seeking enhanced security against both
-                        phishing attempts and fraudulent transactions.
-                    </p>
-
-                </div>
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Start Your Project?</h2>
+            <p class="cta-text">Let's collaborate and bring your ideas to life. I'm always excited to work on innovative projects and solve complex challenges.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn primary">
+                    <i class="fas fa-envelope"></i>
+                    Get In Touch
+                </a>
+                <a href="resumekislay.pdf" class="cta-btn secondary" target="_blank">
+                    <i class="fas fa-download"></i>
+                    Download Resume
+                </a>
             </div>
-
         </div>
+    </section>
 
-    </div>
-
-    <div class="social-icons">
-        <a href="https://www.linkedin.com/in/kislay-kumar-a49a1316b/"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/kislayykumar"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/kislayy.kumar/"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/kislayy.kumar/"><i class="fab fa-facebook"></i></a>
-        <a href="https://x.com/kislayy_kumar"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.quora.com/profile/Kislay-Kumar-182"><i class="fab fa-quora"></i></a>
-        <a href="https://www.geeksforgeeks.org/user/kislay_kumar/"><img src="geeksforgeeks.png" width="45px"
-                height="40px" alt=""></i></a>
-        <a href="https://leetcode.com/u/kislay__kumar/"><img src="leetcode.png" width="45px" height="40px"
-                alt=""></i></a>
-    </div>
-
-    <footer>&copy; Copyright 2024 KISLAY KUMAR</footer>
+    <footer>&copy; 2024 Kislay Kumar</footer>
 
     <script>
-
         document.getElementById("menuIcon").addEventListener("click", function () {
             var mobileNavContent = document.getElementById("mobileNavContent");
             var blackBlur = document.getElementById("blackBlur");
@@ -575,13 +1238,94 @@
             }
         });
 
-
         document.getElementById("blackBlur").addEventListener("click", function () {
-            var navContent = document.getElementById("mobileNavContent");
+            var mobileNavContent = document.getElementById("mobileNavContent");
             var blackBlur = document.getElementById("blackBlur");
             mobileNavContent.classList.remove("show");
             blackBlur.classList.remove("show");
         });
+
+        // Project Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.5s ease forwards';
+                    } else {
+                        const cardCategories = card.getAttribute('data-category');
+                        if (cardCategories && cardCategories.includes(filterValue)) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeInUp 0.5s ease forwards';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for project navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + (target >= 100 ? '+' : '');
+            }, 20);
+        }
+
+        // Intersection Observer for counter animation
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.textContent);
+                        animateCounter(stat, target);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
     </script>
 </body>
 
